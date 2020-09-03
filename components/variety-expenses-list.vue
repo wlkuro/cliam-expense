@@ -1,24 +1,21 @@
 <template>
 <v-container fluid>
-  <v-card>
-    <v-form ref="form" @submit.prevent>
+  <v-form ref="form" @submit.prevent>
+    <v-card class="pa-2 ma-0">
       <v-card-title class="headline">
         申請種別
       </v-card-title>
-      <v-card-text>
-        <v-col class="d-flex" cols="12" sm="12">
+        <v-card-text class="px-6">
+          <p>申請する項目を選択してください。</p>
           <v-select
           :items="items"
           label="Outlined style"
           outlined
+          @change="submit"
           ></v-select>
-        </v-col>
-      </v-card-text>
-      <v-card-actions>
-        <v-btn block outlined @click="submit">申請する</v-btn>
-      </v-card-actions>
-    </v-form>
-  </v-card>
+        </v-card-text>
+    </v-card>
+  </v-form>
 </v-container>
 </template>
 
