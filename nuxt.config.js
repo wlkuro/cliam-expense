@@ -36,6 +36,7 @@ module.exports = {
   */
   buildModules: [
     '@nuxtjs/vuetify',
+    '@nuxtjs/moment',
   ],
   /*
   ** Nuxt.js modules
@@ -62,6 +63,9 @@ module.exports = {
         }
       }
     }
+  },
+  moment: {
+    locals: ['ja']
   },
   /*
   ** Build configuration
