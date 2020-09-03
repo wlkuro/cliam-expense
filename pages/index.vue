@@ -1,24 +1,24 @@
 <template>
+<v-container fluid>
   <v-layout
     column
-    justify-center
-    align-center
   >
     <v-flex>
-    <v-row >
-      <VarietyExpensesList>
-      </VarietyExpensesList>
+    <v-row>
+        <VarietyExpensesList>
+        </VarietyExpensesList>
     </v-row>
     <v-row>
-      <ClaimingStatusList>
-      </ClaimingStatusList>
+        <ClaimingStatusList>
+        </ClaimingStatusList>
     </v-row>
     <v-row>
-      <AwaitingApprovalList>
-      </AwaitingApprovalList>
+        <AwaitingApprovalList>
+        </AwaitingApprovalList>
     </v-row>
     </v-flex>
   </v-layout>
+</v-container>
 </template>
 
 <script>
