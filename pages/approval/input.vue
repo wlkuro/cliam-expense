@@ -132,9 +132,6 @@
 <script>
 
 export default {
-    components: {
-    },
-    data() {
-    },
+
 }
 </script>
