@@ -12,7 +12,7 @@
               label="利用日"
               name="moving-date"
               value=""
-              v-bind:hint=this.exsampleDate
+              v-bind:hint="this.exsampleDate"
               persistent-hint
               outlined
             >
@@ -63,7 +63,7 @@
         <v-btn block outlined @click="getRouteList">検索</v-btn>
       </v-card-actions>
   </v-card>
-  <template v-if=this.routeFlg >
+  <template v-if="this.routeFlg">
     <v-card class="mt-2">
       <v-card-title class="pb-0">
         検索結果
