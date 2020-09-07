@@ -9,6 +9,18 @@
       <v-row>
         <v-col>
           <v-text-field
+            label="申請者 メールアドレス"
+            name="appricant-email"
+            value=""
+            persistent-hint
+            readonly
+          >
+          </v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <v-text-field
             label="申請日"
             value=""
             hide-details
@@ -60,6 +72,17 @@
             hide-details
             readonly
           ></v-textarea>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <v-text-field
+            label="経理担当者 メールアドレス"
+            name="accounting-email"
+            value=""
+            persistent-hint
+          >
+          </v-text-field>
         </v-col>
       </v-row>
       <v-row>

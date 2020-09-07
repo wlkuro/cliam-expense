@@ -9,6 +9,19 @@
         <v-row>
           <v-col>
             <v-text-field
+              label="申請者 メールアドレス"
+              name="appricant-email"
+              value=""
+              hint="例）xxxxxxx@xxxxxxxxxx.co.jp"
+              persistent-hint
+              outlined
+            >
+            </v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-text-field
               label="利用日"
               name="moving-date"
               value=""
@@ -28,6 +41,19 @@
               outlined
               hide-details
             ></v-textarea>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-text-field
+              label="申請先 メールアドレス"
+              name="approver-email"
+              value=""
+              hint="例）xxxxxxx@xxxxxxxxxx.co.jp"
+              persistent-hint
+              outlined
+            >
+            </v-text-field>
           </v-col>
         </v-row>
         <v-row>

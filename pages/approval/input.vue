@@ -9,6 +9,19 @@
       <v-row>
         <v-col>
           <v-text-field
+            label="申請者 メールアドレス"
+            name="appricant-email"
+            value=""
+            hint="例）xxxxxxx@xxxxxxxxxx.co.jp"
+            persistent-hint
+            readonly
+          >
+          </v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <v-text-field
             label="申請日"
             value=""
             hide-details
@@ -24,6 +37,19 @@
             value=""
             hide-details
             readonly
+          >
+          </v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <v-text-field
+            label="経理担当者 メールアドレス"
+            name="accounting-email"
+            value=""
+            hint="例）xxxxxxx@xxxxxxxxxx.co.jp"
+            persistent-hint
+            outlined
           >
           </v-text-field>
         </v-col>
@@ -110,6 +136,7 @@
             name="comment"
             value=""
             hide-details
+            outlined
           ></v-textarea>
         </v-col>
       </v-row>
