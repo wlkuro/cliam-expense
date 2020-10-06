@@ -89,5 +89,8 @@ sw.*
 # Vim swap files
 *.swp
 
+# VScode
+.vscode
+
 # key file
 static/key.json
