@@ -1,4 +1,6 @@
 const colors = require('vuetify/es5/util/colors').default
+const fs = require('fs')
+const jsonData = JSON.parse(fs.readFileSync('./static/key.json'))
 
 module.exports = {
   mode: 'spa',
@@ -76,5 +78,8 @@ module.exports = {
     */
     extend (config, ctx) {
     }
-  }
+  },
+  env: {
+    appId: jsonData.app_id
+  },
 }
