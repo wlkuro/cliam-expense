@@ -91,9 +91,7 @@
         <v-btn block outlined @click="getRouteList">検索</v-btn>
       </v-card-actions>
   </v-card>
-  <template v-if="this.routeFlg">
-    <SearchRoute></SearchRoute>
-  </template>
+  <SearchRoute v-if="this.routeFlg" ref="SearchRoute"></SearchRoute>
   </v-form>
   
 <v-btn class="my-5" outlined to="/" nuxt>一覧へ戻る</v-btn>
@@ -102,7 +100,6 @@
 <script>
 import DatePicker from "~/components/DatePicker.vue"
 import SearchRoute from "~/components/search-routes.vue"
-import axios from "axios"
 
 export default {
     components: {
@@ -120,24 +117,15 @@ export default {
             roundTrip: false,
             routeFlg: false,
             confirm: {},
-
         }
     },
     methods: {
         getRouteList(){
             this.routeFlg = true
-
+            this.$nextTick(function() {
+              this.$refs.SearchRoute.getRoute()
+            });
         },
     },
-    async asyncData(params){
-        const appId = await axios.get(`/static/key.json`)
-        .then(function (response) {
-            console.log(response)
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    }
-
 }
 </script>

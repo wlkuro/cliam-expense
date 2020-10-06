@@ -31,34 +31,43 @@
   </v-card>
 </template>
 <script>
+import axios from "axios"
+
 export default {
 	props:{
 		
 	},
 	data() {
 		return {
+      //url: 'https://jlp.yahooapis.jp/NLUService/V1/analyze?',
 			result: [],
 			items: [
-                {
-                    price: '¥1,000',
-                    route: '×線 ◯◯駅 ~ ××線 ◯◯駅',
-                    via: '',
-                },
-                {
-                    price: '¥500',
-                    route: '×線 ◯◯駅 ~ ××線 ◯◯駅',
-                    via: '経由：××線 ◯◯駅',
-                },
-                {
-                    price: '¥1,200',
-                    route: '×線 ◯◯駅 ~ ××線 ◯◯駅',
-                    via: '経由：××線 ◯◯駅 , ××線 ◯◯駅',
-                },
-            ]
+        {
+            price: '¥1,000',
+            route: '×線 ◯◯駅 ~ ××線 ◯◯駅',
+            via: '',
+        },
+        {
+            price: '¥500',
+            route: '×線 ◯◯駅 ~ ××線 ◯◯駅',
+            via: '経由：××線 ◯◯駅',
+        },
+        {
+            price: '¥1,200',
+            route: '×線 ◯◯駅 ~ ××線 ◯◯駅',
+            via: '経由：××線 ◯◯駅 , ××線 ◯◯駅',
+        },
+     ]
 		}
 	},
 	methods: {
-		
-	}
+    async getRoute() {
+      // const intext = '恵比寿から横浜までの料金';
+      // const urls = this.url + 'appid=' + process.env.appId + '&intext=' + intext;
+      // const decodedUrls = encodeURI(urls);
+      // const { data } = await axios.get(decodedUrls)
+      // console.log(data)       
+    },
+  },
 }
-</script>
+ </script>
