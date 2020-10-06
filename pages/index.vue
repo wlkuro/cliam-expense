@@ -8,14 +8,6 @@
         <VarietyExpensesList>
         </VarietyExpensesList>
     </v-row>
-    <v-row>
-        <ClaimingStatusList>
-        </ClaimingStatusList>
-    </v-row>
-    <v-row>
-        <AwaitingApprovalList>
-        </AwaitingApprovalList>
-    </v-row>
     </v-flex>
   </v-layout>
 </v-container>
