@@ -102,6 +102,7 @@
 <script>
 import DatePicker from "~/components/DatePicker.vue"
 import SearchRoute from "~/components/search-routes.vue"
+import axios from "axios"
 
 export default {
     components: {
@@ -116,17 +117,27 @@ export default {
             reason: '',
             from: '',
             to: '',
-            via: [],
             roundTrip: false,
             routeFlg: false,
-            confirm: {}
+            confirm: {},
+
         }
     },
     methods: {
         getRouteList(){
             this.routeFlg = true
+
         },
     },
+    async asyncData(params){
+        const appId = await axios.get(`/static/key.json`)
+        .then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
 
 }
 </script>
