@@ -113,6 +113,11 @@
 
 <script>
 export default {
+  computed : {
+    confirmData() {
+      console.log(this.$store.state.formData)
+    }
+  }
     
 }
 </script>
