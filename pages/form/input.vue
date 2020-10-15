@@ -116,16 +116,28 @@ export default {
             to: '',
             roundTrip: false,
             routeFlg: false,
-            confirm: {},
         }
     },
     methods: {
         getRouteList(){
             this.routeFlg = true
+            
             this.$nextTick(function() {
               this.$refs.SearchRoute.getRoute()
             });
         },
+        selectRoute() {
+            const setData = {
+              date: this.data,
+              appricantEmail: this.appricantEmail,
+              approverEmail: this.approverEmail,
+              reason: this.reason,
+              from: this.from,
+              to: this.to,
+              roundTrip: this.roundTrip,              
+            }
+            this.$store.commit('setFormData', setData)
+        }
     },
 }
 </script>
