@@ -82,4 +82,7 @@ module.exports = {
   env: {
     appId: jsonData.app_id
   },
+  serverMiddleware: [
+    '~/server/api/index.js'
+  ]
 }
