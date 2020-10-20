@@ -3,77 +3,56 @@
  * to : str ,
  * from : str
  * 
- * return :
+ * return : json 
  * [
- *  { price : str },
+ *  { price : Num },
  *  { via : [ str, str ] or null }
  * ]
  * When there is no data, return null.
  */
 const puppeteer = require('puppeteer');
-const express = require('express');
-const router = express.Router();
 
-async function yahooTransitScraping(to, from){
-    !(async() => {
-        try {
-            const browser = await puppeteer.launch()
-            const page = await browser.newPage() 
-
-            await page.goto('https://transit.yahoo.co.jp/')
-            
-            await page.type('input[name="from"]', from)
-            await page.type('input[name="to"]', to )
-    
-            await page.click('#searchModuleSubmit')
-            await page.waitForNavigation()
-            await page.click('.current')
-            await page.waitForNavigation()
-
-            await page.screenshot({path: 'example.png'})
-            browser.close()
-            return 
-            
-        }catch(err){
-            browser.close()
-            console.error(err)
-        }
-    })()
+async function getViaStation(page){
+    const viaStationSelector = "#route02 > .routeDetail > .fareSection > .station > dl > dt";
+    let data = null;
+    if( await page.$(viaStationSelector).then(res => !!res) ){
+        data = await page.$eval(viaStationSelector, item => {
+        return item.textContent;
+      });
+    }
 }
 
-router.get('/getRouteData', async(req, res) => {
-    res.send('Hello');
-    const to = '横浜';
-    const from = '恵比寿';
-    const returnData = yahooTransitScraping(to, from)
-    
-    res.send(returnData)
-});
+async function yahooTransitScraping(from, to){
+    const browser = await puppeteer.launch({
+      args: [
+        '--no-sandbox',
+        '--disable-dev-shm-usage'
+      ]
+    })
+    const page = await browser.newPage()
+    await page.goto('https://transit.yahoo.co.jp/')
+  
+    await page.type('input[name="from"]', from)
+    await page.type('input[name="to"]', to )
+    await page.select('select[name="s"]', '1')
+  
+    await page.click('#searchModuleSubmit')
+    await page.waitForNavigation()
+  
+    await page.screenshot({path: 'example.png'})
 
-module.exports = router;
+    const via =  await getViaStation(page)
+    const resultData = [
+        {
+            via
+        }
+    ]
+  
+    browser.close()
+    console.log(resultData)
+    return resultData
+}
 
-
-// async function getViaStationData(page){
-//     const viaStationSelector = "#route01 > .routeDetail > .fareSection > .station > dl > dt";
-//     return 
-// }
-
-// async function getRoutePriceData(page){
-//     const routePrice = "#route01 > .routeSummary > .fare > .mark";
-//     // return await page.$eval(routePrice, )
-// }
-
-// router.get('/getRouteData', (req, res) => {
-//     res.send('This is INDEX.');
-//     const to = '横浜';
-//     const from = '恵比寿';
-
-//     // const to = req.query.to;
-//     // const from = req.query.from;
-
-//     const returnData = yahooTransitScraping(to, from)
-//     res.send(returnData)
-//     return 
-// });
-
-// module.exports = router;
+module.exports = {
+    yahooTransitScraping
+}
