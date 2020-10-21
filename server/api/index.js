@@ -13,8 +13,8 @@ app.get('/getRouteData', async(req, res) => {
     const from = '横浜';
     const to = '恵比寿';
     
-    const image = await getRouteData.yahooTransitScraping(from, to)
-    res.send(image)
+    const routeData = await getRouteData.yahooTransitScraping(from, to)
+    res.send(routeData)
 })
 
 module.exports = {
