@@ -13,12 +13,13 @@
 const puppeteer = require('puppeteer');
 
 const getTextContent = async function (page, selector){
-  let result = null;
+  let result;
   if( await page.$(selector).then(res => !!res) ){
     result = await page.$eval(selector, item => {
-      return item.textContent;
+      return item.textContent || null;
     });
   }
+  return result;
 }
 
 async function yahooTransitScraping(from, to){
@@ -36,12 +37,14 @@ async function yahooTransitScraping(from, to){
   await page.select('select[name="s"]', '1')
   await page.click('#searchModuleSubmit')
   await page.waitForNavigation()
-
-  await page.screenshot({path: 'example.png'})
-
+  
   const routePriceSelector = "#route02 > .routeSummary > dd > ul > .fare > .mark"
   const price = await getTextContent(page, routePriceSelector)
   console.log(price)
+  if( price == null ) {
+    browser.close()
+    return null;
+  }
 
   const viaStationSelector = "#route02 > .routeDetail > .fareSection > .station > dl > dt";
   const via = await getTextContent(page, viaStationSelector)
