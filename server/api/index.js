@@ -8,10 +8,8 @@ app.get("/test", (req, res) => {
 
 const getRouteData = require('./getRouteData');
 app.get('/getRouteData', async(req, res) => {
-    // const to = req.query.to;
-    // const from = req.query.from;
-    const from = '横浜';
-    const to = '恵比寿';
+    const to = req.query.to;
+    const from = req.query.from;
     
     const routeData = await getRouteData.yahooTransitScraping(from, to)
     res.send(routeData)
