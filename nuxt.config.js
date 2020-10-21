@@ -4,6 +4,7 @@ const jsonData = JSON.parse(fs.readFileSync('./static/key.json'))
 
 module.exports = {
   mode: 'spa',
+  telemetry: false,
   /*
   ** Headers of the page
   */
@@ -84,5 +85,5 @@ module.exports = {
   },
   serverMiddleware: [
     '~/server/api/index.js'
-  ]
+  ],
 }
